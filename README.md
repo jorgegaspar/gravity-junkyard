@@ -28,13 +28,14 @@ Se já tens o repositório clonado no caminho indicado, salta a linha de `git cl
 git clone https://github.com/jorgegaspar/gravity-junkyard.git \
   /home/jorgegaspar/Tegarte_Labs/gravity_junkyard
 cd /home/jorgegaspar/Tegarte_Labs/gravity_junkyard
+git pull --ff-only origin main
 ./scripts/setup-android.sh
 ./scripts/build-apk.sh
 ```
 
 O instalador descarrega o editor Godot, extrai só o template Android de depuração, instala Android SDK Command-line Tools, Platform-Tools e Build-Tools 35.0.0 e cria a chave de depuração. Lê a licença apresentada pelo SDK Manager e responde `y` se concordares. A exportação usa o template oficial diretamente, sem Android Studio, Gradle, NDK ou emulador. Toda a toolchain fica em `.toolchain/` no clone. Faz cópia de segurança de `.toolchain/debug.keystore` se quiseres manter a possibilidade de atualizar o APK instalado após recriar o clone.
 
-O resultado é `build/gravity-junkyard-debug.apk`, assinado para testes em telemóveis Android ARM de 32 ou 64 bits. Podes copiar o ficheiro para o telemóvel e abri-lo, ou instalar por USB com a depuração USB ativa e autorizada no telemóvel.
+O resultado é `build/gravity-junkyard-debug.apk`, assinado para testes em telemóveis Android 7.0 ou posterior, com processador ARM de 32 ou 64 bits. Podes copiar o ficheiro para o telemóvel e abri-lo, ou instalar por USB com a depuração USB ativa e autorizada no telemóvel.
 
 ```bash
 .toolchain/android-sdk/platform-tools/adb devices
@@ -45,7 +46,7 @@ O resultado é `build/gravity-junkyard-debug.apk`, assinado para testes em telem
 
 ```bash
 cd /home/jorgegaspar/Tegarte_Labs/gravity_junkyard
-git pull --ff-only
+git pull --ff-only origin main
 ./scripts/build-apk.sh
 ```
 
